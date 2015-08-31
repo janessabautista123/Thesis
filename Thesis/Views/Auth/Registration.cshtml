@@ -1,0 +1,25 @@
+﻿@model Thesis.Models.LoginModel
+@{
+    ViewBag.Title = "Registration";
+}
+<center>
+
+
+    @using (Html.BeginForm())
+    {
+
+        <h1>@Html.Label("Registration") </h1>
+        @Html.TextBoxFor(u => u.Users.Username, new { @class = "form-control", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Users.Username) })
+       
+        @Html.PasswordFor(u => u.Users.Password, new { @class = "form-control", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Users.Password) })<br />
+        <p>
+            <br />
+            <button class="btn btn-lg btn-primary" type="submit">Register</button>
+            &emsp;
+            <a href="@Url.Action("Login", "Auth")">
+                <button type="button" class="btn fbtn-lg">  Go Back </button>
+            </a>
+        </p>
+
+    }
+</center>

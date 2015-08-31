@@ -1,0 +1,28 @@
+﻿@model Thesis.Models.Nurse
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutNurse.cshtml";
+}
+
+<title>Pira Card</title>
+
+@Html.ValidationSummary(true)
+
+
+@if (@User.Identity.IsAuthenticated)
+{
+    <div class="page-title-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 wow fadeIn">
+                    <i class="fa fa-user"></i>
+                    <h1>@Html.Label("Welcome, Nurse " + @Html.DisplayFor(u => u.FirstName) + "!") </h1>
+                    <br><br>
+                    <p><p><br>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

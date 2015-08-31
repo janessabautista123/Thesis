@@ -1,0 +1,35 @@
+﻿@model Thesis.Models.LoginModel2
+@{
+    ViewBag.Title = "Sample";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<title>Pira Card</title>
+
+
+<script src="@Url.Content("~/Scripts/jquery-1.8.2.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")"></script>
+
+@using (Html.BeginForm(Html.BeginForm("Login", "Auth", FormMethod.Post, new { @class = "form-signin", Model })))
+{
+    <img src="~/Content/assets/img/testimonials/anona.png" class="form-logo" />
+
+    @Html.TextBoxFor(u => u.Users.Username, new { @class = "form-control", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Users.Username) })
+    @Html.PasswordFor(u => u.Users.Password, new { @class = "form-control", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Users.Password) })
+    <br />
+    <p>
+        <a href="@Url.Action("Registration", "Auth")" button class="btn btn-lg btn-primary btn-block" type="button">  Register</a>
+
+        <br />
+        <img src="@Model.CapImage" alt="" />
+        <label class="col-sm-5 control-label">Verification Code* :</label>
+        @Html.TextBoxFor(t => t.CaptchaCodeText, new { @class = "form-control", tabindex = "12", placeholder = "Verification Code" })
+        @Html.HiddenFor(t => t.CapImageText)
+
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">
+
+    </p>
+
+}
+

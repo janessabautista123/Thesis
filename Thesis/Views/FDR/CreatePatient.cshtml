@@ -1,0 +1,219 @@
+﻿@model Thesis.Models.PatientModel
+
+
+@{
+    ViewBag.Title = "CreatePatient";
+    Layout = "~/Views/Shared/_LayoutFDR.cshtml";
+}
+
+@Html.ValidationSummary(true)
+
+
+
+@if (@User.Identity.IsAuthenticated)
+{
+    <div class="page-title-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 wow fadeIn">
+                    <i class="fa fa-pencil"></i>
+                    <h1>@Html.Label("Create Patient Account") </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="contact-us-container">
+            <div class="container">
+                <div class="row">
+                    @using (Html.BeginForm(Html.BeginForm("CreatePatient", "FDR", FormMethod.Post, new { @class = "form-inline" })))
+                    {
+                        <div class="col-sm-7 contact-form wow fadeInLeft">
+                            <h3> Personal Information</h3>
+
+                            <div class="form-group">
+                                NAME OF DOCTOR: 
+                                <label class="sr-only"></label>
+                                @Html.DropDownList("FirstName")
+                            </div>
+
+
+                            <br />
+                            <br />
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Patient.FirstName, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Patient.FirstName) })
+                            </div>
+                            &emsp;
+
+                            <div class="form-group">
+                                <label class="sr-only"> </label>
+                                @Html.TextBoxFor(u => u.Patient.MiddleName, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Patient.MiddleName) })
+                            </div>
+                            &emsp;
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Patient.LastName, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Patient.LastName) })
+                            </div>
+
+                            <br />
+                            <br />
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Patient.DateBirth, new { @class = "form-control", type = "date" })
+                            </div>
+                            &emsp;
+
+
+                            @Html.RadioButtonFor(u => u.Patient.Sex, "Male") MALE
+
+                            @Html.RadioButtonFor(u => u.Patient.Sex, "Female") FEMALE
+
+                            <br />
+                            <br />
+
+                            MARITAL STATUS: &emsp;
+
+                            @Html.RadioButtonFor(u => u.Patient.Sex, "Single") SINGLE &emsp;
+
+                            @Html.RadioButtonFor(u => u.Patient.Sex, "Married") MARRIED &emsp;
+
+                            @Html.RadioButtonFor(u => u.Patient.Sex, "Widowed") WIDOWED &emsp;
+
+                            @Html.RadioButtonFor(u => u.Patient.Sex, "Divorced") DIVORCED &emsp;
+
+                            &nbsp;
+
+                            <br>
+
+                            <h3> Address </h3>
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Address.AddressType, new { @class = "form-control", type = "name", placeholder = @Html.DisplayName("Address") })
+                            </div>
+
+                            <br />
+                            <br />
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Address.City, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Address.City) })
+                            </div>
+                            &emsp;
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Address.Province, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Address.Province) })
+                            </div>
+                            &emsp;
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Address.Zipcode, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Address.Zipcode) })
+                            </div>
+
+                            <h3> Contact Details </h3>
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Contact.MobileNo, new { @class = "form-control", type = "name", placeholder = @Html.DisplayName("Mobile Number") })
+                            </div>
+                            &emsp;
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Contact.PhoneNo, new { @class = "form-control", type = "name", placeholder = @Html.DisplayName("Phone Number") })
+                            </div>
+
+                            <br />
+                            <br />
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Patient.Email, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Doctor.Email) })
+                            </div>
+
+                        </div>
+                        <br>
+                        
+                        <div class="col-sm-5 contact-address wow fadeInUp">
+                            <br><br>
+                            <h3>Work Details</h3>
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Patient.Occupation, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Patient.Occupation) })
+                            </div>
+                            <br><br>
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Patient.CompanyName, new { @class = "form-control", type = "name", placeholder = @Html.DisplayName("Company Name") })
+                            </div>
+                            <br><br>
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Address.AddressType, new { @class = "form-control", type = "name", placeholder = @Html.DisplayName("Address") })
+                            </div>
+                            &emsp;
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Address.City, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Address.City) })
+                            </div>
+
+                            <br><br>
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Address.Province, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Address.Province) })
+                            </div>
+                            &emsp;
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Address.Zipcode, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Address.Zipcode) })
+                            </div>
+
+                            <br><br>
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Contact.MobileNo, new { @class = "form-control", type = "name", placeholder = @Html.DisplayName("Mobile Number") })
+                            </div>
+                            &emsp;
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Contact.PhoneNo, new { @class = "form-control", type = "name", placeholder = @Html.DisplayName("Phone Number") })
+                            </div>
+
+                            
+                            <br>
+                            <br>
+                            <br>
+
+                            <div class="dropdown">
+                                <a aria-expanded="true">
+                                   @Html.DropDownListFor(u => u.Patient.HoursWorked, new List<SelectListItem>
+                                {
+                                  new SelectListItem(){Text = "Average Number of Work Hours Per Week?", Value = ""},
+                                  new SelectListItem(){Text = "0", Value = "0"},
+                                  new SelectListItem(){Text = "20", Value = "20"},
+                                  new SelectListItem(){Text = "40", Value = "40"},
+                                  new SelectListItem(){Text = "> 40", Value = ">40"}
+                                }, new { @class = "btn btn-default dropdown-toggle" })
+                                </a>
+                            </div>
+
+                            <br><br>
+                            <br><br>
+                            <br><br>
+                            <br><br>
+                        </div>
+                        <center><button type="submit" class="btn btn-default">Submit</button></center>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

@@ -1,0 +1,202 @@
+﻿@model Thesis.Models.FDRModel
+@{
+    ViewBag.Title = "EditProfile";
+    Layout = "~/Views/Shared/_LayoutFDR.cshtml";
+}
+
+@Html.ValidationSummary(true)
+
+@if (@User.Identity.IsAuthenticated)
+{
+    <div class="page-title-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 wow fadeIn">
+                    <i class="fa fa-pencil"></i>
+                    <h1>@Html.Label("Edit FDR Account") </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="contact-us-container">
+            <div class="container">
+                <div class="row">
+                    @using (Html.BeginForm(Html.BeginForm("EditProfile", "FDR", FormMethod.Post, new { @class = "form-inline" })))
+                    {
+                        <div class="col-sm-7 contact-form wow fadeInLeft">
+                            <h3> Personal Information</h3>
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.FDR.FirstName, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.FDR.FirstName) })
+                            </div>
+                            &emsp;
+
+                            <div class="form-group">
+                                <label class="sr-only"> </label>
+                                @Html.TextBoxFor(u => u.FDR.MiddleName, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.FDR.MiddleName) })
+                            </div>
+                            &emsp;
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.FDR.LastName, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.FDR.LastName) })
+                            </div>
+
+                            <br />
+                            <br />
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.FDR.LicenseNo, new { @class = "form-control", type = "name", placeholder = @Html.DisplayName("License Number") })
+                            </div>
+                            &emsp;
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.FDR.Specialization, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.FDR.Specialization) })
+                            </div>
+
+                            <br />
+                            <br />
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.FDR.DateBirth, new { @class = "form-control", type = "date" })
+                            </div>
+                            &emsp;
+
+
+                            @Html.RadioButtonFor(u => u.FDR.Sex, "true") MALE
+
+                            @Html.RadioButtonFor(u => u.FDR.Sex, "false") FEMALE
+
+
+                            &nbsp;
+
+
+                            <br>
+
+                            <h3> Address </h3>
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Address.AddressType, new { @class = "form-control", type = "name", placeholder = @Html.DisplayName("Address") })
+                            </div>
+
+                            <br />
+                            <br />
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Address.City, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Address.City) })
+                            </div>
+                            &emsp;
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Address.Province, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Address.Province) })
+                            </div>
+                            &emsp;
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Address.Zipcode, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Address.Zipcode) })
+                            </div>
+
+
+                            <h3> Contact Details </h3>
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Contact.MobileNo, new { @class = "form-control", type = "name", placeholder = @Html.DisplayName("Mobile Number") })
+                            </div>
+                            &emsp;
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Contact.PhoneNo, new { @class = "form-control", type = "name", placeholder = @Html.DisplayName("Phone Number") })
+                            </div>
+
+                            <br />
+                            <br />
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.FDR.Email, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.FDR.Email) })
+                            </div>
+
+                        </div>
+                        <div class="col-sm-5 contact-address wow fadeInUp">
+                            <br><br>
+                            <h3>Hospital Details</h3>
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.FDR.EmployeeId, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.FDR.EmployeeId) })
+                            </div>
+                            <br><br>
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.FDR.HospName, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.FDR.HospName) })
+                            </div>
+                            <br><br>
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Address.AddressType, new { @class = "form-control", type = "name", placeholder = @Html.DisplayName("Address") })
+                            </div>
+                            &emsp;
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.Address.City, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Address.City) })
+                            </div>
+
+                            <h3> Account Details </h3>
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+
+                                @Html.TextBoxFor(u => u.Users.Username, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Users.Username) })
+                            </div>
+                            <br>
+                            <br>
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.PasswordFor(u => u.Users.Password, new { @class = "form-control", value = Model.Users.Password, placeholder = @Html.DisplayNameFor(u => u.Users.Password) })
+                            </div>
+                            <br>
+                            <br>
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.PasswordFor(u => u.Users.Password, new { @class = "form-control", value = Model.Users.Password, placeholder = @Html.DisplayName("Confirm Password") })
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+
+                            <div class="dropdown">
+                                <a aria-expanded="true">
+                                    @Html.DropDownListFor(u => u.FDR.SecQuestion, new List<SelectListItem>
+                                {
+                                  new SelectListItem(){Text = "What was the first test you cheated on?", Value = "Question1"},
+                                  new SelectListItem(){Text = "Who was the first person you cheated on?", Value = "Question2"},
+                                  new SelectListItem(){Text = "When was the first time you cheated?", Value = "Question3"}
+                                }, new { @class = "btn btn-default dropdown-toggle" })
+                                </a>
+                            </div>
+
+                            <br>
+
+                            <div class="form-group">
+                                <label class="sr-only"></label>
+                                @Html.TextBoxFor(u => u.FDR.SecAnswer, new { @class = "form-control", type = "name", placeholder = @Html.DisplayName("Security Answer") })
+                            </div>
+
+                        </div>
+                        <br><br>
+                        <center><button type="submit" class="btn btn-default">Submit</button></center>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

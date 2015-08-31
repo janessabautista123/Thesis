@@ -1,0 +1,216 @@
+﻿@model Thesis.Models.FDRModel
+@{
+    ViewBag.Title = "CreateFDR";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@Html.ValidationSummary(true)
+
+@if (@User.Identity.IsAuthenticated)
+{
+    <div class="page-title-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 wow fadeIn">
+                    <i class="fa fa-pencil"></i>
+                    <h1>@Html.Label("Create FDR Account") </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="contact-us-container">
+            <div class="container">
+                <div class="row">
+                    <ul class="nav nav-tabs" role="tablist" id="createTab">
+                        <li class="active"><a href="#tab1" data-toggle="tab">PERSONAL INFORMATION</a></li>
+                        <li><a href="#tab2" data-toggle="tab">CONTACT DETAILS</a></li>
+                        <li><a href="#tab3" data-toggle="tab">HOSPITAL DETAILS</a></li>
+                        <li><a href="#tab4" data-toggle="tab">ACCOUNT DETAILS</a></li>
+                    </ul>
+                    @using (Html.BeginForm(Html.BeginForm("CreateFDR", "Admin", FormMethod.Post, new { @class = "form-inline" })))
+                    {
+                        <div class="tab-content" id="active-tab-content">
+                            <div class="tab-pane fade in active" id="tab1">
+                                <div class="col-sm-7 contact-form wow fadeInUp">
+                                    <h3> Personal Information</h3>
+
+                                    <div class="form-group">
+                                        <label class="sr-only"></label>
+                                        @Html.TextBoxFor(u => u.FDR.FirstName, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.FDR.FirstName) })
+                                    </div>
+                                    &emsp;
+
+                                    <div class="form-group">
+                                        <label class="sr-only"> </label>
+                                        @Html.TextBoxFor(u => u.FDR.MiddleName, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.FDR.MiddleName) })
+                                    </div>
+                                    &emsp;
+                                    <div class="form-group">
+                                        <label class="sr-only"></label>
+                                        @Html.TextBoxFor(u => u.FDR.LastName, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.FDR.LastName) })
+                                    </div>
+
+                                    <br />
+                                    <br />
+
+                                    <div class="form-group">
+                                        <label class="sr-only"></label>
+                                        @Html.TextBoxFor(u => u.FDR.LicenseNo, new { @class = "form-control", type = "name", placeholder = @Html.DisplayName("License Number") })
+                                    </div>
+                                    &emsp;
+
+                                    <div class="form-group">
+                                        <label class="sr-only"></label>
+                                        @Html.TextBoxFor(u => u.FDR.Specialization, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.FDR.Specialization) })
+                                    </div>
+
+                                    <br />
+                                    <br />
+
+                                    <div class="form-group">
+                                        <label class="sr-only"></label>
+                                        @Html.TextBoxFor(u => u.FDR.DateBirth, new { @class = "form-control", type = "date" })
+                                    </div>
+                                    &emsp;
+
+
+                                    @Html.RadioButtonFor(u => u.FDR.Sex, "true") MALE
+
+                                    @Html.RadioButtonFor(u => u.FDR.Sex, "false") FEMALE
+
+                                </div>
+                                &nbsp;
+
+
+                                <br>
+                                <div class="col-sm-5 contact-address wow fadeInUp">
+                                    <h3> Address </h3>
+                                    <div class="form-group">
+                                        <label class="sr-only"></label>
+                                        @Html.TextBoxFor(u => u.Address.AddressType, new { @class = "form-control", type = "name", placeholder = @Html.DisplayName("Address") })
+                                    </div>
+
+                                    <br />
+                                    <br />
+
+                                    <div class="form-group">
+                                        <label class="sr-only"></label>
+                                        @Html.TextBoxFor(u => u.Address.City, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Address.City) })
+                                    </div>
+                                    &emsp;
+                                    <div class="form-group">
+                                        <label class="sr-only"></label>
+                                        @Html.TextBoxFor(u => u.Address.Province, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Address.Province) })
+                                    </div>
+                                    <br /><br />
+                                    <div class="form-group">
+                                        <label class="sr-only"></label>
+                                        @Html.TextBoxFor(u => u.Address.Zipcode, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Address.Zipcode) })
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab2">
+                                <h3> Contact Details </h3>
+
+                                <div class="form-group">
+                                    <label class="sr-only"></label>
+                                    @Html.TextBoxFor(u => u.Contact.MobileNo, new { @class = "form-control", type = "name", placeholder = @Html.DisplayName("Mobile Number") })
+                                </div>
+                                &emsp;
+                                <div class="form-group">
+                                    <label class="sr-only"></label>
+                                    @Html.TextBoxFor(u => u.Contact.PhoneNo, new { @class = "form-control", type = "name", placeholder = @Html.DisplayName("Phone Number") })
+                                </div>
+
+                                <br />
+                                <br />
+
+                                <div class="form-group">
+                                    <label class="sr-only"></label>
+                                    @Html.TextBoxFor(u => u.FDR.Email, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.FDR.Email) })
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="tab3">
+                                <h3>Hospital Details</h3>
+                                <div class="form-group">
+                                    <label class="sr-only"></label>
+                                    @Html.TextBoxFor(u => u.FDR.EmployeeId, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.FDR.EmployeeId) })
+                                </div>
+                                <br><br>
+
+                                <div class="form-group">
+                                    <label class="sr-only"></label>
+                                    @Html.TextBoxFor(u => u.FDR.HospName, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.FDR.HospName) })
+                                </div>
+                                <br><br>
+
+                                <div class="form-group">
+                                    <label class="sr-only"></label>
+                                    @Html.TextBoxFor(u => u.Address.AddressType, new { @class = "form-control", type = "name", placeholder = @Html.DisplayName("Address") })
+                                </div>
+                                &emsp;
+
+                                <div class="form-group">
+                                    <label class="sr-only"></label>
+                                    @Html.TextBoxFor(u => u.Address.City, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Address.City) })
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab4">
+                                <h3> Account Details </h3>
+                                <div class="form-group">
+                                    <label class="sr-only"></label>
+
+                                    @Html.TextBoxFor(u => u.Users.Username, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Users.Username) })
+                                </div>
+                                <br>
+                                <br>
+                                <div class="form-group">
+                                    <label class="sr-only"></label>
+                                    @Html.PasswordFor(u => u.Users.Password, new { @class = "form-control", placeholder = @Html.DisplayNameFor(u => u.Users.Password) })
+                                </div>
+                                <br>
+                                <br>
+                                <div class="form-group">
+                                    <label class="sr-only"></label>
+                                    @Html.PasswordFor(u => u.Users.Password, new { @class = "form-control", placeholder = @Html.DisplayName("Confirm Password") })
+                                </div>
+                                <br>
+                                <br>
+
+                                <div class="dropdown">
+                                    <a aria-expanded="true">
+                                        @Html.DropDownListFor(u => u.FDR.SecQuestion, new List<SelectListItem>
+                                {
+                                  new SelectListItem(){Text = "Select Security Question", Value = "", Disabled=true, Selected=true},
+                                  new SelectListItem(){Text = "What was the first test you cheated on?", Value = "Question1"},
+                                  new SelectListItem(){Text = "Who was the first person you cheated on?", Value = "Question2"},
+                                  new SelectListItem(){Text = "When was the first time you cheated?", Value = "Question3"}
+                                }, new { @class = "btn btn-default dropdown-toggle" })
+                                    </a>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <label class="sr-only"></label>
+                                    @Html.TextBoxFor(u => u.FDR.SecAnswer, new { @class = "form-control", type = "name", placeholder = @Html.DisplayName("Security Answer") })
+                                </div>
+                            </div>
+                            <br>
+
+
+
+                        </div>
+                        <br><br>
+
+                    }
+
+                </div>
+            </div>
+            <center><button type="submit" class="btn btn-default fadeInUpBig">Submit</button></center>
+        </div>
+    </div>
+}
+

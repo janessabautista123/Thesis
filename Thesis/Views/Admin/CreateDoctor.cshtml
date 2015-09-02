@@ -19,178 +19,194 @@
             </div>
         </div>
     </div>
+    
+    <br />
 
     <div class="row">
-
         <div class="contact-us-container">
-            <div class="container">
-                <div class="row">
-                    <ul class="nav nav-tabs" role="tablist" id="createTab">
-                        <li class="active"><a href="#tab1" data-toggle="tab">PERSONAL INFORMATION</a></li>
-                        <li><a href="#tab2" data-toggle="tab">CONTACT DETAILS</a></li>
-                        <li><a href="#tab3" data-toggle="tab">HOSPITAL DETAILS</a></li>
-                        <li><a href="#tab4" data-toggle="tab">ACCOUNT DETAILS</a></li>
-                    </ul>
-                    @using (Html.BeginForm(Html.BeginForm("CreateDoctor", "Admin", FormMethod.Post, new { @class = "form-inline identificalForm", id = "identicalForm" })))
+            <div class="container" id="myWizard">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4" style="width: 20%;">
+                        Step 1 of 4
+                    </div>
+                </div>
+
+
+                @*<div class="row">*@
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav nav-tabs" role="tablist" id="createTab">
+                            <li class="active"><a href=".tab1" data-toggle="tab" data-step="1">PERSONAL INFORMATION</a></li>
+                            <li><a href=".tab2" data-toggle="tab" data-step="2">CONTACT DETAILS</a></li>
+                            <li><a href=".tab3" data-toggle="tab" data-step="3">HOSPITAL DETAILS</a></li>
+                            <li><a href=".tab4" data-toggle="tab" data-step="4">ACCOUNT DETAILS</a></li>
+                        </ul>
+                     </div>
+                 </div>
+
+                        @using (Html.BeginForm(Html.BeginForm("CreateDoctor", "Admin", FormMethod.Post, new { @class = "form-inline identificalForm", id = "identicalForm" })))
                     {
-                        <div class="tab-content" id="active-tab-content">
-                            <div class="tab-pane fade in active" id="tab1">
-                                <div class="col-sm-7 contact-form wow fadeInLeft">
-                                    <h3> Personal Information</h3>
+                            <div class="tab-content" id="active-tab-content">
+                                <div class="tab-pane fade in active tab1" id="step1">
+                                    <div class="col-sm-7 contact-form wow fadeInLeft">
+                                        <h3> Personal Information</h3>
 
-                                    <div class="form-group">
-                                        <label class="sr-only"></label>
-                                        @Html.TextBoxFor(u => u.Doctor.FirstName, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Doctor.FirstName) })
-                                    </div>
-                                    &emsp;
-
-                                    <div class="form-group">
-                                        <label class="sr-only"> </label>
-                                        @Html.TextBoxFor(u => u.Doctor.MiddleName, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Doctor.MiddleName) })
-                                    </div>
-                                    &emsp;
-                                    <div class="form-group">
-                                        <label class="sr-only"></label>
-                                        @Html.TextBoxFor(u => u.Doctor.LastName, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Doctor.LastName) })
-                                    </div>
-
-                                    <br />
-                                    <br />
-
-                                    <div class="form-group">
-                                        <label class="sr-only"></label>
-                                        @Html.TextBoxFor(u => u.Doctor.LicenseNo, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayName("License Number") })
-                                    </div>
-                                    &emsp;
-
-                                    <div class="form-group">
-                                        <label class="sr-only"></label>
-                                        @Html.TextBoxFor(u => u.Doctor.Specialization, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Doctor.Specialization) })
-                                    </div>
-
-                                    <br />
-                                    <br />
-
-                                    <div class="form-group">
-                                        <label class="sr-only"></label>
-                                        <div class="input-group input-append date" id="datePicker">
-                                            @Html.TextBoxFor(u => u.Doctor.DateBirth, new { @class = "form-control", name = "date", required = "autofocus", placeholder= @Html.DisplayName("Birthday") })
-                                            <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        <div class="form-group">
+                                            <label class="sr-only"></label>
+                                            @Html.TextBoxFor(u => u.Doctor.FirstName, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Doctor.FirstName) })
                                         </div>
+                                        &emsp;
+
+                                        <div class="form-group">
+                                            <label class="sr-only"> </label>
+                                            @Html.TextBoxFor(u => u.Doctor.MiddleName, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Doctor.MiddleName) })
+                                        </div>
+                                        &emsp;
+                                        <div class="form-group">
+                                            <label class="sr-only"></label>
+                                            @Html.TextBoxFor(u => u.Doctor.LastName, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Doctor.LastName) })
+                                        </div>
+
+                                        <br />
+                                        <br />
+
+                                        <div class="form-group">
+                                            <label class="sr-only"></label>
+                                            @Html.TextBoxFor(u => u.Doctor.LicenseNo, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayName("License Number") })
+                                        </div>
+                                        &emsp;
+
+                                        <div class="form-group">
+                                            <label class="sr-only"></label>
+                                            @Html.TextBoxFor(u => u.Doctor.Specialization, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Doctor.Specialization) })
+                                        </div>
+
+                                        <br />
+                                        <br />
+
+                                        <div class="form-group">
+                                            <label class="sr-only"></label>
+                                            <div class="input-group input-append date" id="datePicker">
+                                                @Html.TextBoxFor(u => u.Doctor.DateBirth, new { @class = "form-control", name = "date", required = "autofocus", placeholder = @Html.DisplayName("Birthday") })
+                                                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                                            </div>
+                                        </div>
+                                        &emsp;
+
+                                        @Html.RadioButtonFor(u => u.Doctor.Sex, "Male", new { name = "gender", required = "autofocus" }) MALE
+                                        &nbsp;
+                                        @Html.RadioButtonFor(u => u.Doctor.Sex, "Female", new { name = "gender", required = "autofocus" }) FEMALE
+
+                                    </div>
+                                    &nbsp;
+
+
+                                    <br>
+                                    <div class="col-sm-5 contact-address wow fadeInUp">
+                                        <h3> Address </h3>
+                                        <div class="form-group">
+                                            <label class="sr-only"></label>
+                                            @Html.TextBoxFor(u => u.Address.AddressType, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayName("Address") })
+                                        </div>
+
+                                        <br />
+                                        <br />
+
+                                        <div class="form-group">
+                                            <label class="sr-only"></label>
+                                            @Html.TextBoxFor(u => u.Address.City, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Address.City) })
+                                        </div>
+                                        &emsp;
+                                        <div class="form-group">
+                                            <label class="sr-only"></label>
+                                            @Html.TextBoxFor(u => u.Address.Province, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Address.Province) })
+                                        </div>
+                                        &emsp;
+                                        <br /><br />
+                                        <div class="form-group">
+                                            <label class="sr-only"></label>
+                                            @Html.TextBoxFor(u => u.Address.Zipcode, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Address.Zipcode) })
+                                        </div>r
                                     </div>
                                     &emsp;
-
-                                    @Html.RadioButtonFor(u => u.Doctor.Sex, "Male", new { name = "gender", required = "autofocus" }) MALE
-                                    &nbsp;
-                                    @Html.RadioButtonFor(u => u.Doctor.Sex, "Female", new { name = "gender", required = "autofocus" }) FEMALE
-
+                                    <br /><br /><a class="btn btn-default next" href="#step2">Continue</a>
                                 </div>
-                                &nbsp;
+                                
+                                <div class="tab-pane fade tab2" id="step2">
+                                    <h3> Contact Details </h3>
 
+                                    <div class="form-group">
+                                        <label class="sr-only"></label>
+                                        @Html.TextBoxFor(u => u.Contact.MobileNo, new { @class = "form-control", type = "number", min = "0", placeholder = @Html.DisplayName("Mobile Number") })
+                                    </div>
+                                    &emsp;
+                                    <div class="form-group">
+                                        <label class="sr-only"></label>
+                                        @Html.TextBoxFor(u => u.Contact.PhoneNo, new { @class = "form-control", type = "number", min = "0", placeholder = @Html.DisplayName("Phone Number") })
+                                    </div>
 
-                                <br>
-                                <div class="col-sm-5 contact-address wow fadeInUp">
-                                    <h3> Address </h3>
+                                    <br />
+                                    <br />
+
+                                    <div class="form-group">
+                                        <label class="sr-only"></label>
+                                        @Html.TextBoxFor(u => u.Doctor.Email, new { @class = "form-control", type = "email", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Doctor.Email) })
+                                    </div>
+                                    <br /><br /><a class="btn btn-default next" href="#">Continue</a>
+                                </div>
+                                <div class="tab-pane fade tab3" id="step3">
+                                    <h3>Hospital Details</h3>
+                                    <div class="form-group">
+                                        <label class="sr-only"></label>
+                                        @Html.TextBoxFor(u => u.Doctor.EmployeeId, new { @class = "form-control", type = "number", min = "0", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Doctor.EmployeeId) })
+                                    </div>
+                                    <br><br>
+
+                                    <div class="form-group">
+                                        <label class="sr-only"></label>
+                                        @Html.TextBoxFor(u => u.Doctor.HospName, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Doctor.HospName) })
+                                    </div>
+                                    <br><br>
+
                                     <div class="form-group">
                                         <label class="sr-only"></label>
                                         @Html.TextBoxFor(u => u.Address.AddressType, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayName("Address") })
                                     </div>
-
-                                    <br />
-                                    <br />
+                                    &emsp;
 
                                     <div class="form-group">
                                         <label class="sr-only"></label>
                                         @Html.TextBoxFor(u => u.Address.City, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Address.City) })
                                     </div>
-                                    &emsp;
-                                    <div class="form-group">
-                                        <label class="sr-only"></label>
-                                        @Html.TextBoxFor(u => u.Address.Province, new { @class = "form-control", type = "name", placeholder = @Html.DisplayNameFor(u => u.Address.Province) })
-                                    </div>
-                                    &emsp;
-                                    <br /><br />
-                                    <div class="form-group">
-                                        <label class="sr-only"></label>
-                                        @Html.TextBoxFor(u => u.Address.Zipcode, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Address.Zipcode) })
-                                    </div>
+                                    <br /><br /><a class="btn btn-default next" href="#">Continue</a>
                                 </div>
-                                &emsp;
-                            </div>
-                            <div class="tab-pane fade" id="tab2">
-                                <h3> Contact Details </h3>
+                                <div class="tab-pane fade tab4" id="step4">
+                                    <div class="col-sm-4">
+                                        <h3> Account Details </h3>
+                                        <div class="form-group">
+                                            <label class="sr-only"></label>
 
-                                <div class="form-group">
-                                    <label class="sr-only"></label>
-                                    @Html.TextBoxFor(u => u.Contact.MobileNo, new { @class = "form-control", type = "number", min = "0", placeholder = @Html.DisplayName("Mobile Number") })
-                                </div>
-                                &emsp;
-                                <div class="form-group">
-                                    <label class="sr-only"></label>
-                                    @Html.TextBoxFor(u => u.Contact.PhoneNo, new { @class = "form-control", type = "number", min = "0", placeholder = @Html.DisplayName("Phone Number") })
-                                </div>
+                                            @Html.TextBoxFor(u => u.Users.Username, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Users.Username) })
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <div class="form-group password">
+                                            <label class="sr-only"></label>
+                                            @Html.PasswordFor(u => u.Users.Password, new { @class = "form-control", name = "password", id = "password", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Users.Password) })
 
-                                <br />
-                                <br />
-
-                                <div class="form-group">
-                                    <label class="sr-only"></label>
-                                    @Html.TextBoxFor(u => u.Doctor.Email, new { @class = "form-control", type = "email", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Doctor.Email) })
-                                </div>
-
-                            </div>
-                            <div class="tab-pane fade" id="tab3">
-                                <h3>Hospital Details</h3>
-                                <div class="form-group">
-                                    <label class="sr-only"></label>
-                                    @Html.TextBoxFor(u => u.Doctor.EmployeeId, new { @class = "form-control", type = "number", min = "0", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Doctor.EmployeeId) })
-                                </div>
-                                <br><br>
-
-                                <div class="form-group">
-                                    <label class="sr-only"></label>
-                                    @Html.TextBoxFor(u => u.Doctor.HospName, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Doctor.HospName) })
-                                </div>
-                                <br><br>
-
-                                <div class="form-group">
-                                    <label class="sr-only"></label>
-                                    @Html.TextBoxFor(u => u.Address.AddressType, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayName("Address") })
-                                </div>
-                                &emsp;
-
-                                <div class="form-group">
-                                    <label class="sr-only"></label>
-                                    @Html.TextBoxFor(u => u.Address.City, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Address.City) })
-                                </div>
-                                </div>
-                            <div class="tab-pane fade" id="tab4">
-                                <div class="col-sm-4">
-                                    <h3> Account Details </h3>
-                                    <div class="form-group">
-                                        <label class="sr-only"></label>
-
-                                        @Html.TextBoxFor(u => u.Users.Username, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Users.Username) })
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <div class="form-group password">
-                                        <label class="sr-only"></label>
-                                        @Html.PasswordFor(u => u.Users.Password, new { @class = "form-control", name = "password", id = "password", required = "autofocus", placeholder = @Html.DisplayNameFor(u => u.Users.Password) })
-
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <div class="form-group password">
-                                        <label class="sr-only"></label>
-                                        @Html.PasswordFor(u => u.Users.Password, new { @class = "form-control", name = "confirmPassword", id = "confirmPassword", required = "autofocus", placeholder = @Html.DisplayName("Confirm Password") })
-                                    </div>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <div class="form-group password">
+                                            <label class="sr-only"></label>
+                                            @Html.PasswordFor(u => u.Users.Password, new { @class = "form-control", name = "confirmPassword", id = "confirmPassword", required = "autofocus", placeholder = @Html.DisplayName("Confirm Password") })
+                                        </div>
                                     </div>
                                     <br>
                                     <br>
                                     <br>
                                     <br>
-                               
+
                                     <div class="col-sm-8">
                                         <div class="dropdown">
                                             <a aria-expanded="true">
@@ -211,15 +227,18 @@
                                             @Html.TextBoxFor(u => u.Doctor.SecAnswer, new { @class = "form-control", type = "name", required = "autofocus", placeholder = @Html.DisplayName("Security Answer") })
                                         </div>
                                     </div>
+                                    <button type="submit" class="btn btn-success">Submit</button>
                                 </div>
-                        <br><br>
-                    </div>
+                                <br><br>
+
+                            </div>
+
                     }
-                    <center><button type="submit" class="btn btn-default">Submit</button></center>
-                </div>
-            </div>
+
+                        @*</div>*@
+                    </div>
         </div>
-        </div>
+    </div>
 
 }
 
